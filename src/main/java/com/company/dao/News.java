@@ -14,7 +14,7 @@ public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
@@ -22,11 +22,11 @@ public class News implements Serializable {
     @Column(name = "DETAIL_TEXT", nullable = false)
     private String text;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

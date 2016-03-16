@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="com.company" />
-
+    <import resource="spring/hibernate-context.xml" />
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
