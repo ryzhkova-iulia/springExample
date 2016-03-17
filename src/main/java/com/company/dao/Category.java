@@ -1,16 +1,16 @@
 package com.company.dao;
 
-import org.hibernate.annotations.OptimisticLockType;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Created by ���� on 14.03.2016.
+ * Created by julia on 17.03.2016.
  */
-@Entity
-public class News implements Serializable {
 
+@Entity
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
@@ -19,12 +19,8 @@ public class News implements Serializable {
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
 
-    @Column(name = "DETAIL_TEXT", nullable = false)
-    private String text;
-
-    @ManyToOne()
-    @JoinColumn(name = "CATEGORY_ID")
-    private Category category;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private Set<News> news = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -42,19 +38,11 @@ public class News implements Serializable {
         this.name = name;
     }
 
-    public String getText() {
-        return text;
+    public Set<News> getNews() {
+        return news;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setNews(Set<News> news) {
+        this.news = news;
     }
 }

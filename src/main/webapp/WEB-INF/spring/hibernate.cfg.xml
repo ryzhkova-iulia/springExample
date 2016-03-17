@@ -12,7 +12,7 @@
         <!-- This will drop our existing database and re-create a new one.
                 Existing data will be deleted! -->
         <property name="hbm2ddl.auto">update</property>
-
+        <property name="hibernate.connection.charSet">UTF-8</property>
 
         <property name="hibernate.c3p0.min_size">5</property>
         <property name="hibernate.c3p0.max_size">20</property>

@@ -51,7 +51,7 @@ public class HelloController {
    public String delete(@RequestParam(value="id", required=true) Integer id, Model model) {
        newsService.delete(id);
        model.addAttribute("id", id);
-       return "news/deletedPage";
+       return "news/deletedNews";
     }
 
    @RequestMapping(value = "/edit", method = RequestMethod.GET)
