@@ -2,6 +2,7 @@ package com.company.dao;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,10 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
     private Integer id;
+
+    @Column(name = "date_time", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date = new Date();
 
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
@@ -44,5 +49,13 @@ public class Category implements Serializable {
 
     public void setNews(Set<News> news) {
         this.news = news;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
