@@ -11,12 +11,6 @@
 
    <button><a href="${addUrl}">Add Category</a></button>
 
-   <select name="category">
-       <c:forEach items="${items}" var="itemCategory">
-            <option value="${itemCategory.id}">${itemCategory.name}
-       </c:forEach>
-   </select>
-
    <c:forEach items="${items}" var="item">
         <c:url var="deleteUrl" value="/category/delete?id=${item.id}" />
         <c:url var="editUrl" value="/category/edit?id=${item.id}" />

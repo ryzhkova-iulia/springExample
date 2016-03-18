@@ -4,6 +4,7 @@ import org.hibernate.annotations.OptimisticLockType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by ���� on 14.03.2016.
@@ -15,6 +16,10 @@ public class News implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
     private Integer id;
+
+    @Column(name = "date_time", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date = new Date();
 
     @Column(name = "NAME", nullable = false, length = 255)
     private String name;
@@ -56,5 +61,13 @@ public class News implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

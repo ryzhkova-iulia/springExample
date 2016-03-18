@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by Юлия on 15.03.2016.
+ * Created by пїЅпїЅпїЅпїЅ on 15.03.2016.
  */
 @Service("newsService")
 @Transactional
@@ -63,9 +63,10 @@ public class NewsService {
 
         // Retrieve existing person first
         News news = session.get(News.class, id);
-
-        // Delete
-        session.delete(news);
+        if (news != null) {
+            // Delete
+            session.delete(news);
+        }
     }
 
     /**
@@ -75,11 +76,12 @@ public class NewsService {
         // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
 
-        News existingNews = (News) session.get(News.class, news.getId());
+        News existingNews = session.get(News.class, news.getId());
 
         // Assign updated values to this person
         existingNews.setName(news.getName());
         existingNews.setText(news.getText());
+        existingNews.setCategory(news.getCategory());
         // Save updates
         session.save(existingNews);
     }
